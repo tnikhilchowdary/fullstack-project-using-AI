@@ -1,0 +1,32 @@
+.chat-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.chat-page-container h1 {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.chat-description {
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .chat-page-container {
+    padding: 15px;
+  }
+
+  .chat-page-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .chat-description {
+    font-size: 0.95rem;
+  }
+}
+

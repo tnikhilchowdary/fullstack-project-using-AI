@@ -1,0 +1,248 @@
+.dashboard-home {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-home h1 {
+  color: var(--text-primary);
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.task-section, .calendar-section {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+}
+
+.task-count {
+  background: #667eea;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.task-card {
+  padding: 15px;
+  border-radius: 12px;
+  border-left: 4px solid;
+  background: var(--bg-tertiary);
+  transition: all 0.3s;
+}
+
+.task-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.task-card.priority-high {
+  border-left-color: #dc3545;
+}
+
+.task-card.priority-medium {
+  border-left-color: #ffc107;
+}
+
+.task-card.priority-low {
+  border-left-color: #28a745;
+}
+
+.task-card.completed {
+  opacity: 0.6;
+}
+
+.task-card h4 {
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.task-card.completed h4 {
+  text-decoration: line-through;
+  color: var(--text-tertiary);
+}
+
+.task-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.task-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.priority-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.priority-badge.priority-high {
+  background: #fee;
+  color: #c33;
+}
+
+.priority-badge.priority-medium {
+  background: #fef3cd;
+  color: #856404;
+}
+
+.priority-badge.priority-low {
+  background: #d4edda;
+  color: #155724;
+}
+
+.completed-badge {
+  background: #d4edda;
+  color: #155724;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.pending-badge {
+  background: #fff3cd;
+  color: #856404;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.no-tasks {
+  text-align: center;
+  color: #999;
+  padding: 40px;
+}
+
+.react-calendar {
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+}
+
+.react-calendar__tile.has-tasks {
+  background: #667eea !important;
+  color: white !important;
+  border-radius: 8px;
+  font-weight: bold;
+  position: relative;
+}
+
+.react-calendar__tile.has-tasks:hover {
+  background: #5568d3 !important;
+}
+
+.react-calendar__tile--active.has-tasks {
+  background: #4c51bf !important;
+}
+
+.calendar-info {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.calendar-info p {
+  color: #666;
+  margin: 5px 0;
+}
+
+.calendar-hint {
+  font-size: 13px;
+  color: #999;
+}
+
+.selected-date-tasks {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #e0e0e0;
+}
+
+.selected-date-tasks h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.selected-date-tasks .task-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.stat-card h3 {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #667eea;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
