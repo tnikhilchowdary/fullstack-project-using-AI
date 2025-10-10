@@ -1,0 +1,203 @@
+{
+  "info": {
+    "name": "Todo API - MERN Stack",
+    "description": "Complete CRUD operations for Todo application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Server Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": [""]
+        },
+        "description": "Check if server is running and view all available endpoints"
+      }
+    },
+    {
+      "name": "Database Connection Test",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/test",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "test"]
+        },
+        "description": "Test MongoDB connection status"
+      }
+    },
+    {
+      "name": "CREATE - Add New Todo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Complete MERN Project\",\n  \"description\": \"Build a full-stack todo application\",\n  \"priority\": \"high\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/todos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "todos"]
+        },
+        "description": "Create a new todo item"
+      }
+    },
+    {
+      "name": "READ - Get All Todos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/todos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "todos"]
+        },
+        "description": "Retrieve all todo items"
+      }
+    },
+    {
+      "name": "READ - Get Single Todo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/todos/YOUR_TODO_ID",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "todos", "YOUR_TODO_ID"]
+        },
+        "description": "Get a specific todo by ID (replace YOUR_TODO_ID with actual ID)"
+      }
+    },
+    {
+      "name": "UPDATE - Mark as Completed",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"completed\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/todos/YOUR_TODO_ID",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "todos", "YOUR_TODO_ID"]
+        },
+        "description": "Mark a todo as completed (replace YOUR_TODO_ID with actual ID)"
+      }
+    },
+    {
+      "name": "UPDATE - Modify Todo",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Complete MERN Project ✅\",\n  \"completed\": true,\n  \"priority\": \"high\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/todos/YOUR_TODO_ID",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "todos", "YOUR_TODO_ID"]
+        },
+        "description": "Update todo title and other fields (replace YOUR_TODO_ID with actual ID)"
+      }
+    },
+    {
+      "name": "DELETE - Remove Todo",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/todos/YOUR_TODO_ID",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "todos", "YOUR_TODO_ID"]
+        },
+        "description": "Delete a todo (replace YOUR_TODO_ID with actual ID)"
+      }
+    },
+    {
+      "name": "CREATE - Sample Todo 1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Learn MongoDB\",\n  \"description\": \"Master MongoDB CRUD operations\",\n  \"priority\": \"medium\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/todos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "todos"]
+        }
+      }
+    },
+    {
+      "name": "CREATE - Sample Todo 2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Test APIs with Postman\",\n  \"description\": \"Test all CRUD endpoints\",\n  \"priority\": \"low\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/todos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "todos"]
+        }
+      }
+    }
+  ]
+}
+

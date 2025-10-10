@@ -1,0 +1,58 @@
+### MERN Todo API - Protected Routes Testing
+
+### 1. Register a new user (Get Token)
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "API Test User",
+  "email": "apitest@example.com",
+  "password": "test123"
+}
+
+### 2. Login (Get Token)
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@gmail.com",
+  "password": "123456"
+}
+
+### Response will be:
+# {
+#   "success": true,
+#   "data": {
+#     "token": "eyJhbGc..." ← COPY THIS TOKEN
+#   }
+# }
+
+### 3. Get All Todos (Protected - Need Token)
+GET http://localhost:5000/api/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTkyNjY4NDQyYTc3MDE0ZmZhMGU0ZCIsImlhdCI6MTc2MDExMDE5MiwiZXhwIjoxNzYyNzAyMTkyfQ.QV-NLkpJihBmzQ9WBpcp9Sp9yS4cioSBKEC_xxrFZOY
+
+### 4. Create Todo (Protected - Need Token)
+POST http://localhost:5000/api/todos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTkyNjY4NDQyYTc3MDE0ZmZhMGU0ZCIsImlhdCI6MTc2MDExMDE5MiwiZXhwIjoxNzYyNzAyMTkyfQ.QV-NLkpJihBmzQ9WBpcp9Sp9yS4cioSBKEC_xxrFZOY
+
+{
+  "title": "Test from REST Client",
+  "description": "Testing protected route",
+  "priority": "high",
+  "dueDate": "2025-10-15"
+}
+
+### 5. Update Todo (Protected - Need Token)
+PUT http://localhost:5000/api/todos/YOUR_TODO_ID
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "completed": true
+}
+
+### 6. Delete Todo (Protected - Need Token)
+DELETE http://localhost:5000/api/todos/YOUR_TODO_ID
+Authorization: Bearer YOUR_TOKEN_HERE
+

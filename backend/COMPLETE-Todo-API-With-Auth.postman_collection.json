@@ -1,0 +1,425 @@
+{
+  "info": {
+    "name": "Complete Todo API with Authentication",
+    "description": "Full MERN Stack Todo API - Test all frontend requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "todo_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "1. Register New User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set(\"token\", jsonData.data.token);",
+                  "    console.log('Token saved:', jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "register"]
+            },
+            "description": "Register a new user - Same as frontend Signup form"
+          },
+          "response": []
+        },
+        {
+          "name": "2. Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set(\"token\", jsonData.data.token);",
+                  "    console.log('Token saved:', jsonData.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login"]
+            },
+            "description": "Login existing user - Same as frontend Login form"
+          },
+          "response": []
+        },
+        {
+          "name": "3. Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/profile",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "profile"]
+            },
+            "description": "Get authenticated user profile - Protected route"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Todo Operations (Protected)",
+      "item": [
+        {
+          "name": "1. Get All Todos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/todos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "todos"]
+            },
+            "description": "Get all todos for authenticated user - Same as ViewTasks component"
+          },
+          "response": []
+        },
+        {
+          "name": "2. Create New Todo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set(\"todo_id\", jsonData.data._id);",
+                  "    console.log('Todo ID saved:', jsonData.data._id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Complete project\",\n  \"description\": \"Finish the todo app\",\n  \"priority\": \"high\",\n  \"dueDate\": \"2025-10-15\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/todos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "todos"]
+            },
+            "description": "Create new todo - Same as AddTodo form"
+          },
+          "response": []
+        },
+        {
+          "name": "3. Get Single Todo",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/todos/{{todo_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "todos", "{{todo_id}}"]
+            },
+            "description": "Get single todo by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "4. Update Todo - Mark Complete",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"completed\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/todos/{{todo_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "todos", "{{todo_id}}"]
+            },
+            "description": "Mark todo as complete - Same as ViewTasks toggle"
+          },
+          "response": []
+        },
+        {
+          "name": "5. Update Todo - Full Update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Task Title\",\n  \"description\": \"Updated description\",\n  \"priority\": \"low\",\n  \"dueDate\": \"2025-10-20\",\n  \"completed\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/todos/{{todo_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "todos", "{{todo_id}}"]
+            },
+            "description": "Update all todo fields"
+          },
+          "response": []
+        },
+        {
+          "name": "6. Delete Todo",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/todos/{{todo_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "todos", "{{todo_id}}"]
+            },
+            "description": "Delete todo - Same as ViewTasks delete button"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Server Status",
+      "item": [
+        {
+          "name": "1. Check Server Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Check if server is running"
+          },
+          "response": []
+        },
+        {
+          "name": "2. Database Connection Test",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/test",
+              "host": ["{{base_url}}"],
+              "path": ["api", "test"]
+            },
+            "description": "Test MongoDB connection"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sample Test Data",
+      "item": [
+        {
+          "name": "Create Todo - High Priority",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.collectionVariables.set(\"todo_id\", jsonData.data._id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Fix critical bug\",\n  \"description\": \"Fix authentication issue\",\n  \"priority\": \"high\",\n  \"dueDate\": \"2025-10-11\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/todos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "todos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Todo - Medium Priority",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Update documentation\",\n  \"description\": \"Add API documentation\",\n  \"priority\": \"medium\",\n  \"dueDate\": \"2025-10-13\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/todos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "todos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Todo - Low Priority",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Code cleanup\",\n  \"description\": \"Remove unused code\",\n  \"priority\": \"low\",\n  \"dueDate\": \"2025-10-20\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/todos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "todos"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
+
