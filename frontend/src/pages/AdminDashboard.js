@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/AdminDashboard.css';
 
+// Use environment variable for API URL in production
+const API_BASE_URL = process.env.REACT_APP_API_URL || '';
+
 function AdminDashboard() {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -28,10 +31,10 @@ function AdminDashboard() {
     setLoading(true);
     try {
       const [statsRes, usersRes, todosRes, messagesRes] = await Promise.all([
-        axios.get('/api/admin/stats'),
-        axios.get('/api/admin/users'),
-        axios.get('/api/admin/todos'),
-        axios.get('/api/admin/messages')
+        axios.get(`${API_BASE_URL}/api/admin/stats`),
+        axios.get(`${API_BASE_URL}/api/admin/users`),
+        axios.get(`${API_BASE_URL}/api/admin/todos`),
+        axios.get(`${API_BASE_URL}/api/admin/messages`)
       ]);
 
       setStats(statsRes.data.data);
@@ -55,7 +58,7 @@ function AdminDashboard() {
     }
 
     try {
-      await axios.delete(`/api/admin/users/${userId}`);
+      await axios.delete(`${API_BASE_URL}/api/admin/users/${userId}`);
       alert('User deleted successfully');
       fetchAdminData();
     } catch (error) {

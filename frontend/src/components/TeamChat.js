@@ -4,7 +4,9 @@ import io from 'socket.io-client';
 import axios from 'axios';
 import '../styles/TeamChat.css';
 
-const SOCKET_URL = 'http://localhost:5000';
+// Use environment variable for API URL in production
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const SOCKET_URL = API_BASE_URL;
 const ROOM = 'general'; // Default team chat room
 
 function TeamChat() {
@@ -77,7 +79,7 @@ function TeamChat() {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await axios.get(`/api/chat/${ROOM}`);
+        const response = await axios.get(`${API_BASE_URL}/api/chat/${ROOM}`);
         setMessages(response.data.data);
       } catch (error) {
         console.error('Error fetching messages:', error);

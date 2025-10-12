@@ -1,6 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
+// Use environment variable for API URL in production
+const API_BASE_URL = process.env.REACT_APP_API_URL || '';
+
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -30,7 +33,7 @@ export const AuthProvider = ({ children }) => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         // Fetch user profile
         try {
-          const response = await axios.get('/api/auth/profile');
+          const response = await axios.get(`${API_BASE_URL}/api/auth/profile`);
           setUser(response.data.data);
         } catch (error) {
           console.error('Error fetching profile:', error);
@@ -49,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('/api/auth/login', { email, password });
+      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, { email, password });
       const { token, ...userData } = response.data.data;
       
       localStorage.setItem('token', token);
@@ -68,7 +71,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
     try {
-      const response = await axios.post('/api/auth/register', { name, email, password });
+      const response = await axios.post(`${API_BASE_URL}/api/auth/register`, { name, email, password });
       const { token, ...userData } = response.data.data;
       
       localStorage.setItem('token', token);

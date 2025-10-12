@@ -2,6 +2,9 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 import axios from 'axios';
 
+// Use environment variable for API URL in production
+const API_BASE_URL = process.env.REACT_APP_API_URL || '';
+
 const ThemeContext = createContext();
 
 export const useTheme = () => {
@@ -41,7 +44,7 @@ export const ThemeProvider = ({ children }) => {
     // Save to backend if user is logged in
     if (user) {
       try {
-        await axios.put('/api/auth/theme', { theme: newTheme });
+        await axios.put(`${API_BASE_URL}/api/auth/theme`, { theme: newTheme });
       } catch (error) {
         console.error('Error saving theme preference:', error);
       }
