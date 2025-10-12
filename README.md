@@ -137,10 +137,18 @@ For detailed API testing examples, see:
 
 ## 📚 Documentation
 
+### Getting Started
 - **🔐 Authentication**: See `AUTHENTICATION_GUIDE.md` - **START HERE!**
 - **Backend API**: See `backend/POSTMAN_TESTING_GUIDE.md`
 - **Postman Collection**: `backend/Todo-API.postman_collection.json`
 - **Frontend Guide**: See `FRONTEND_GUIDE.md`
+
+### Deployment Guides
+- **🚂 Railway Deployment**: See `RAILWAY_START_HERE.md` - **RECOMMENDED!**
+- **⚡ Quick Deploy**: See `RAILWAY_QUICK_START.md`
+- **📖 Step-by-Step**: See `RAILWAY_STEP_BY_STEP.md`
+- **🔧 Troubleshooting**: See `RAILWAY_TROUBLESHOOTING.md`
+- **📊 Platform Comparison**: See `RAILWAY_VS_OTHERS.md`
 
 ## 🚀 Quick Start
 
