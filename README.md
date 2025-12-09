@@ -13,18 +13,21 @@ A full-stack task management application built with MongoDB, Express, React, and
 ### 🎨 Dashboard Views
 
 #### Light Theme Dashboard
-![Dashboard Light Theme](screenshots/app-dashboard-light.png)
+<img src="screenshots/app-dashboard-light.png" alt="Dashboard Light Theme" width="800"/>
+
 *Clean, modern dashboard with Today's Tasks, Tomorrow's Tasks, and Calendar widget*
 
 #### Dark Theme Dashboard
-![Dashboard Dark Theme](screenshots/app-dashboard-dark.png)
+<img src="screenshots/app-dashboard-dark.png" alt="Dashboard Dark Theme" width="800"/>
+
 *Professional dark mode interface with purple/blue gradient accents*
 
 ---
 
 ### ✏️ Add Todo Feature
 
-![Add Todo Page](screenshots/app-add-todo-light.png)
+<img src="screenshots/app-add-todo-light.png" alt="Add Todo Page" width="800"/>
+
 *Intuitive form for creating new tasks with priority levels and due dates*
 
 **Features:**
@@ -38,7 +41,8 @@ A full-stack task management application built with MongoDB, Express, React, and
 
 ### 📋 View Tasks Page
 
-![View Tasks](screenshots/app-view-tasks-light.png)
+<img src="screenshots/app-view-tasks-light.png" alt="View Tasks" width="800"/>
+
 *Comprehensive task management with filtering and actions*
 
 **Features:**
@@ -57,7 +61,8 @@ A full-stack task management application built with MongoDB, Express, React, and
 
 ### 📊 Analytics Dashboard
 
-![Analytics Dashboard](screenshots/app-analytics-light.png)
+<img src="screenshots/app-analytics-light.png" alt="Analytics Dashboard" width="800"/>
+
 *Data-driven insights with interactive charts and statistics*
 
 **Features:**
@@ -76,7 +81,8 @@ A full-stack task management application built with MongoDB, Express, React, and
 
 ### 💬 Team Chat
 
-![Team Chat](screenshots/app-team-chat-light.png)
+<img src="screenshots/app-team-chat-light.png" alt="Team Chat" width="800"/>
+
 *Real-time collaboration with instant messaging*
 
 **Features:**
