@@ -81,9 +81,11 @@ A full-stack task management application built with MongoDB, Express, React, and
 
 ### 💬 Team Chat
 
-<img src="screenshots/app-team-chat-light.png" alt="Team Chat" width="800"/>
+<img src="screenshots/app-team-chat-light.png" alt="Team Chat" width="800" onerror="this.style.display='none'"/>
 
 *Real-time collaboration with instant messaging*
+
+> **Note:** Team Chat screenshot coming soon!
 
 **Features:**
 - Real-time messaging with Socket.io
